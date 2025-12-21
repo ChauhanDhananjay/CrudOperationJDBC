@@ -18,4 +18,18 @@ This project demonstrates **CRUD operations**, **MVC architecture**, and **input
 
 ---
 
+## Technologies Used
+
+- Java (Core Java)
+- JDBC
+- MySQL
+---
+
+## Concepts Covered
+
+- JDBC CRUD operations
+- PreparedStatement
+- MVC design pattern
+- Clean code practices
+---
 
