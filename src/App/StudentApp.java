@@ -1,26 +1,30 @@
 package App;
 
 import Controller.StudentController;
-
 import java.util.Scanner;
 
 public class StudentApp {
+
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        int choice;
         StudentController controller = new StudentController();
-        do {
+        boolean continueApp = true;
+
+        while (continueApp) {
+
             System.out.println("\n===== STUDENT CRUD MENU =====");
             System.out.println("1. Insert Student");
             System.out.println("2. View All Students");
             System.out.println("3. View Student By ID");
             System.out.println("4. Update Student");
             System.out.println("5. Delete Student");
-            System.out.println("6. Exit");
 
             System.out.print("Enter choice: ");
-            choice = sc.nextInt();
+            int choice = sc.nextInt();
+
             switch (choice) {
+
                 case 1:
                     System.out.print("ID: ");
                     int id = sc.nextInt();
@@ -57,16 +61,33 @@ public class StudentApp {
                     controller.deleteStudent(id);
                     break;
 
-                case 6:
-                    System.out.println("Thank You!");
-                    break;
-
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println("❌ Invalid choice!");
             }
 
-        }while (choice != 6);
 
+            continueApp = askToContinue(sc);
+        }
+
+        System.out.println("Thank you! Application exited.");
         sc.close();
+    }
+
+
+    private static boolean askToContinue(Scanner sc) {
+        char choice;
+
+        while (true) {
+            System.out.print("\nPress Y to continue or N to exit: ");
+            choice = sc.next().toUpperCase().charAt(0);
+
+            if (choice == 'Y') {
+                return true;
+            } else if (choice == 'N') {
+                return false;
+            } else {
+                System.out.println("Invalid choice. Please press Y or N.");
+            }
+        }
     }
 }
